@@ -2,7 +2,7 @@
 function spinalCase(str) {
   str = str.replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase();
 
-  str = str.split(/[\- _]/).join('-');
+  str = str.split(/[\s_]/).join('-');
   return str;
 }
 
