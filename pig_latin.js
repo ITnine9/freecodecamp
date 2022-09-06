@@ -51,3 +51,32 @@ function translatePigLatin3(str) {
 }
 
 console.log(translatePigLatin3("rhythm"));
+
+// method 4
+function translatePigLatin4(str) {
+    const vowelRegex = /^[aeiou]/;
+    if (vowelRegex.test(str)) return str + 'way';
+
+    const regex = /^[^aeiou]+/;
+    const consonants = str.match(regex)[0];
+
+    return str.slice(consonants.length) + consonants + 'ay';
+}
+
+// method 5
+function translatePigLatin5(str) {
+    return str
+            .replace(/^[aeiou]+\w*/, '$&way')
+            .replace(/(^[^aeiou]+)(\w*)/, '$2$1ay')
+}
+
+// method 6 - recursive 
+function translatePigLatin6(str, charPos = 0) {
+    return ['a', 'e', 'i', 'o', 'u'].includes(str[0]) 
+        ? str + (charPos === 0 ? 'way' : 'ay')
+        : charPos === str.length 
+            ? str + 'ay'
+            : translatePigLatin6(str.slice(1) + str[0], charPos + 1);
+
+}
+
