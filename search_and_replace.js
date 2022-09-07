@@ -1,3 +1,4 @@
+// method 1 
 function myReplace(str, before, after) {
   const capRegex = /^[A-Z]\w*/;
   after = capRegex.test(before) ? after[0].toUpperCase() + after.slice(1)

@@ -1,0 +1,6 @@
+array.findIndex()
+array.find()
+array.includes()
+array.every()
+array.flat()
+new Set()
