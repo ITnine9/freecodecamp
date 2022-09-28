@@ -47,3 +47,25 @@ function smallestCommons2(arr) {
     }
 }
 console.log(smallestCommons2([1, 5]));
+
+function smallestCommons3(arr) {
+    const [min, max] = arr.sort((a, b) => a-b);
+    const range = Array(max - min + 1).fill(0).map( (_, i) => i + min);
+
+    const upperBound = range.reduce((acc, curr) => acc * curr);
+
+    for (let multiple = max; multiple <= upperBound; multiple += max) {
+        const divisible = range.every( number => multiple % number == 0);
+        if (divisible) {
+            return multiple;
+        }
+    }
+}
+console.log(smallestCommons3([1, 5]));
+
+// Euclidean algorithm to find gcd
+function find_gcd(arr) {
+    const [min, max] = arr.sort((a, b) => a-b);
+    return min === 0 ? max : find_gcd([min, max % min]);
+}
+console.log(find_gcd([18, 48]));
